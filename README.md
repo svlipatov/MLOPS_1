@@ -35,7 +35,19 @@ PlaylistTrack - соответствие playlist-ов и треков
   
 # Автоматизация построения прогноза по этапам  
 ## Формирование экспортной витрины  
-Экспортая витрина ZEXPORT_SALES  
-Поля  
+Экспортая витрина ZEXPORT_SALES 
+Принцип формирования витрины ZEXPORT_SALES  
+| Поле витрины  | Таблица     | Поле     |
+|:--------------|:------------------------------:|--------------------------:|
+| Month         |  Invoice             | invoice_date |
+| Artist        |  Artist_Name         | Name |
+| Genre         |  Genre               | Name |
+| Audio_format  |  MediaType           | Name |
+| Counrty       |  Customer            | Country |
+| Amount        |  Invoice             | Total |
+
+
+
+
 
 
