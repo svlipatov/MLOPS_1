@@ -3,10 +3,9 @@ import pandas as pd
 def get_sales_data_f():
     # Импорт параметров БД
     df_db = pd.read_csv('db.csv')
-
     # Соединение
-    with psycopg2.connect(dbname='STORE_SALES', user='postgres',
-                            password='Postgres!1', host='host.docker.internal', port=5432) as conn:
+    with psycopg2.connect(dbname=df_db.loc[0,'dbname'], user=df_db.loc[0,'user'],
+                            password=df_db.loc[0,'password'], host=df_db.loc[0,'jenkins host']) as conn:
         sql = "SELECT date, sum(sales) as sales FROM public.\"SALES\" group by date"
         # Результат запроса в DataFrame
         df_sales = pd.read_sql(sql, conn)

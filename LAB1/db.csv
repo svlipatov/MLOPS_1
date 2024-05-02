@@ -1,2 +1,2 @@
-dbname,user,password,host
-STORE_SALES,postgres,Postgres!1,localhost
+dbname;user;password;host;jenkins host
+STORE_SALES;postgres;Postgres!1;localhost;host.docker.internal
