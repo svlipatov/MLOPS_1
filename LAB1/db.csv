@@ -1,0 +1,2 @@
+dbname,user,password,host
+STORE_SALES,postgres,Postgres!1,localhost
