@@ -2,8 +2,8 @@ import pandas as pd
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 # Файлы лежат на уровень выше
-import sys
-sys.path.append('..')
+# import sys
+# sys.path.append('..')
 from GET_SALES_DATA import get_sales_data_f
 from model_fit import get_add_features
 
