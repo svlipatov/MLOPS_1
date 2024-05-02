@@ -2,7 +2,7 @@ import psycopg2
 import pandas as pd
 def get_sales_data_f():
     # Импорт параметров БД
-    df_db = pd.read_csv('/Users/sergei/PycharmProjects/ML_2023_1/DB/db.csv')
+    df_db = pd.read_csv('db.csv')
 
     # Соединение
     with psycopg2.connect(dbname=df_db.loc[0,'dbname'], user=df_db.loc[0,'user'],
