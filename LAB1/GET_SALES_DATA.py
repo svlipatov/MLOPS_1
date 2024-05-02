@@ -6,7 +6,7 @@ def get_sales_data_f():
 
     # Соединение
     with psycopg2.connect(dbname='STORE_SALES', user='postgres',
-                            password='Postgres!1', host='127.0.0.1', port=5432) as conn:
+                            password='Postgres!1', host='host.docker.internal', port=5432) as conn:
         sql = "SELECT date, sum(sales) as sales FROM public.\"SALES\" group by date"
         # Результат запроса в DataFrame
         df_sales = pd.read_sql(sql, conn)
