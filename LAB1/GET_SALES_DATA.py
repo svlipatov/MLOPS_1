@@ -6,7 +6,7 @@ def get_sales_data_f():
 
     # Соединение
     with psycopg2.connect(dbname=df_db.loc[0,'dbname'], user=df_db.loc[0,'user'],
-                            password=df_db.loc[0,'password'], host=df_db.loc[0,'host']) as conn:
+                            password=df_db.loc[0,'password'], host='127.0.0.1', port=5432) as conn:
         sql = "SELECT date, sum(sales) as sales FROM public.\"SALES\" group by date"
         # Результат запроса в DataFrame
         df_sales = pd.read_sql(sql, conn)
