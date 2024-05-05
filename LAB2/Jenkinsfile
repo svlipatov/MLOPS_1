@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+    stages {
+        stage('Copy data from git') {
+            steps {
+                    echo "Getting data from git"
+                    git branch: 'dev', url: 'https://github.com/svlipatov/MLOPS_1.git'
+                    echo "Data received from git"
+            }
+        }
+        stage('Setup virtual environment') {
+            steps {
+                    sh '''
+                    if [ ! -d ".venv" ]; then
+                        echo "Creating virtual environment"
+                        env_name=${1:-".venv"}
+                        python3 -m venv "$env_name"
+                        echo "Virtual environment '$env_name' has been created"
+                    fi
+                    '''
+            }
+        }
+        stage('Activate virtual environment') {
+            steps {
+                    sh '''
+                    echo "Activating virtual environment"
+                    env_name=${1:-".venv"}
+                    chmod +x ./$env_name/bin/activate
+                    ./$env_name/bin/activate
+                    echo "Virtual environment activated"
+                    '''
+            }
+        }
+        stage('Install requirements') {
+            steps {
+                    sh '''
+                    echo "Installing requirement packages"
+                    env_name=${1:-".venv"}
+                    $env_name/bin/pip3 install -r requirements.txt
+                    echo "Requirement packages installed"
+                    '''
+            }
+        }
+        stage('Model training') {
+            steps {
+                dir('LAB2') {
+                    sh '''
+                    echo "Training model"
+                    $WORKSPACE/.venv/bin/python3 model_fit.py
+                    echo "Model trained"
+                    '''
+                }
+            }
+        }
+        stage('Getting metrics') {
+            steps {
+                dir('LAB2') {
+                    sh '''
+                    echo "Getting metrics"
+                    $WORKSPACE/.venv/bin/python3 metrics.py
+                    echo "Metrics received"
+                    '''
+                }
+            }
+        }
+    }
+}
