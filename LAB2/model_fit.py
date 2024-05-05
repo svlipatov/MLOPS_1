@@ -9,11 +9,6 @@ from sklearn.metrics import r2_score
 from GET_SALES_DATA import get_sales_data_f
 import pickle
 import socket
-import os
-
-current_working_directory = os.getcwd()
-# Проверка
-print(current_working_directory)
 
 # Файл одновременно для проекта и для домашних заданий. Много функций чтобы их не дублировать
 def make_lags(ts, lags):
@@ -104,15 +99,11 @@ if __name__ == "__main__":
     x, y, dates = split_x_y(df_train)
     # Обучение
     pipe = pipeline_fit(model, preprocessors, x, y)
-    if socket.gethostname()[-5:] == 'local':
-          path = ''
-    else:
-        path = '/LAB2/'
     # Сохранение pipe
-    pkl_filename = path + "model/model.pkl"
+    pkl_filename = "model.pkl"
     with open(pkl_filename, 'wb') as file1:
         pickle.dump(pipe, file1)
     # Сохранение тестового набора данных
-    df_test.to_csv(path + 'test/test.csv', index=False)
+    df_test.to_csv('test.csv', index=False)
 
 
