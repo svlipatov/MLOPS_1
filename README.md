@@ -30,6 +30,8 @@ LAB2:
 python в эту виртуальную среду из файла requirements и запускает команды на выполнение python файлов model_fit, metrics
 2. model_fit.py - обучает модель и складывает в файл
 3. metrics.py - получает метрики модели и складывает в файл
+4. Jenkinsfile - код скрипта pipeline в jenkins
+5. Сборка скриншот - скриншот выполнения успешной сборки по скрипту pipeline в jenkins
 
 
 
