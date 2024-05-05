@@ -9,6 +9,11 @@ from sklearn.metrics import r2_score
 from GET_SALES_DATA import get_sales_data_f
 import pickle
 import socket
+import os
+
+current_working_directory = os.getcwd()
+# Проверка
+print(current_working_directory)
 
 # Файл одновременно для проекта и для домашних заданий. Много функций чтобы их не дублировать
 def make_lags(ts, lags):
