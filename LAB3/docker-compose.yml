@@ -1,0 +1,10 @@
+version: "3.0"
+services:
+  app:
+    build: .
+    image: "mlops3-api-image"
+    volumes:
+      - .:/mlops3
+    ports:
+      - "8000:8000"
+    restart: always
